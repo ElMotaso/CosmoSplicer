@@ -13,36 +13,24 @@ var IS_BUMPER = true
 var MOVING = false
 var LIFE = 100
 var sees_player = true
+var current_waypoint = null
 
 func _ready():
 	add_to_group("spaceship")
+	$RayCast2D.enabled = true
+	$RayCast2D.collide_with_areas = true
+	$RayCast2D.collide_with_bodies = true
 
 
-func has_line_of_sight_to(player):
-	var start_position = self.global_position
-	var end_position = player.global_position  # Make sure this references your player node correctly
-
-	# Create a PhysicsRayQueryParameters2D object
-	var ray_query = PhysicsRayQueryParameters2D.new()
-	ray_query.from = start_position
-	ray_query.to = end_position
-	# You can set additional parameters on ray_query as needed, like collision mask
-
-	# Perform the raycast using Physics2DServer
-	var space_state = get_world_2d().direct_space_state
-	var result = space_state.intersect_ray(ray_query)
-	space_state.intersect_ray(ray_query)
-
-	# Check if the raycast hit something
-	if result.size() > 0:
-		# Check if the collider of the raycast result is the player
-		if result.collider == player:
-			return true
-		else:
-			return false
-	else:
-		# No collision detected, implying no direct line of sight (e.g., open space)
+func sees(player):
+	if player == null:
 		return false
+	$RayCast2D.target_position = $RayCast2D.to_local(player.global_position)
+	$RayCast2D.force_raycast_update()
+	if $RayCast2D.is_colliding():
+		if $RayCast2D.get_collider() == player:
+			return true
+	return false
 
 
 
@@ -60,10 +48,35 @@ func angle_to(player):
 		angle_difference -= 2 * PI
 	return angle_difference
 
+
+func get_closest_waypoint():
+	var waypoints = get_node_or_null("/root/World/Map/Waypoints")
+	if waypoints == null:
+		return null
+	
+	var closest_waypoint = null
+	var min_dist = INF
+	
+	for waypoint in waypoints.get_children():
+		var dist = global_position.distance_to(waypoint.global_position)
+		if dist < min_dist:
+			min_dist = dist
+			closest_waypoint = waypoint
+	return closest_waypoint
+
+func new_waypoint():
+	var name = current_waypoint.name
+	var index_str = name.replace("Waypoint", "")
+	var index = int(index_str)
+	var neighbours = get_node_or_null("/root/World/Map").waypoint_connections[index - 1]
+	var waypoint_index = neighbours[randi_range(0, neighbours.size() - 1)] - 1
+	return get_node_or_null("/root/World/Map/Waypoints").get_children()[waypoint_index]
+
 func _physics_process(_delta):
 	var player = get_node_or_null("/root/World/Spaceship")
 	
-	if sees_player:
+	if sees(player) and false:
+		sees_player = true
 		var angle_to_player = angle_to(player)
 		if angle_to_player < 0:
 			rotation -= ROTATION_SPEED * _delta
@@ -91,7 +104,36 @@ func _physics_process(_delta):
 			velocity = velocity2
 		
 		velocity *= FRICTION_FACTOR
-	
+	elif current_waypoint != null and !sees_player:
+		if global_position.distance_to(current_waypoint.global_position) < 300:
+			current_waypoint = new_waypoint()
+		var angle_to_waypoint = angle_to(current_waypoint)
+		if angle_to_waypoint < 0:
+			rotation -= ROTATION_SPEED * _delta
+		else:
+			rotation += ROTATION_SPEED * _delta
+		
+		
+		up_direction = Vector2(cos(rotation), sin(rotation))
+		var direction = 0
+		if -PI/3 < angle_to_waypoint and angle_to_waypoint < PI/3:
+			direction += 1
+			MOVING = true
+		else:
+			MOVING = false
+		
+
+		# Calculate new velocity based on up_direction and movement speed
+		velocity += up_direction.normalized() *  direction * MOVEMENT_SPEED
+		var velocity2 = velocity.normalized() * MAX_SPEED
+		
+		if velocity.abs() > velocity2.abs():
+			velocity = velocity2
+		
+		velocity *= FRICTION_FACTOR
+	else:
+		sees_player = false
+		current_waypoint = get_closest_waypoint()
 	move_and_slide()
 
 
@@ -125,7 +167,10 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_check_player_timer_timeout():
-	if has_line_of_sight_to(get_node_or_null("/root/World/Spaceship")):
-		sees_player = true
+	if sees(get_node_or_null("/root/World/Spaceship")):
+		sees_player = sees_player
 	else:
-		sees_player = true
+		sees_player = sees_player
+
+func _on_checkwaypont_timer_timeout():
+	pass

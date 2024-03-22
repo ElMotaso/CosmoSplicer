@@ -7,6 +7,7 @@
 
 [node name="Spaceship" type="CharacterBody2D"]
 scale = Vector2(1.1, 1.1)
+collision_mask = 3
 safe_margin = 1.0
 script = ExtResource("1_0pqyd")
 bullet = ExtResource("2_yg87a")
@@ -32,6 +33,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(5, -1)

@@ -1,7 +1,7 @@
 extends Area2D
 
 var speed = 750
-var damage = 5
+var damage = 0
 
 var collision_enabled_after_seconds = 0.1
 

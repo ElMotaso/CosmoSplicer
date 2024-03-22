@@ -7,7 +7,7 @@ const ROTATION_SPEED = 2.0
 const FRICTION_FACTOR = 0.99
 # const TAN30DEG = tan(deg_to_rad(30))
 
-var MAX_SPEED = 2000
+var MAX_SPEED = 4000
 var CAN_SHOOT = true
 var LIFE = 100
 
