@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpxtem0s40gv4"]
+
+[ext_resource type="Script" path="res://Bullet.gd" id="1_flvhf"]
+[ext_resource type="Texture2D" uid="uid://livqjv2w75bh" path="res://ressources/bullet.png" id="2_rnj6i"]
+
+[node name="Bullet" type="RigidBody2D"]
+script = ExtResource("1_flvhf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rnj6i")
+offset = Vector2(-0.5, -0.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -7, -7, 0, 0, 7, 7, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_bullet_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_life_timer_timeout"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://6wpg0yq0wap7"]
+
+[ext_resource type="Script" path="res://map.gd" id="1_0763c"]
+[ext_resource type="Texture2D" uid="uid://bt0sjgx7rqho5" path="res://ressources/background_black.jpeg" id="1_dxxdi"]
+[ext_resource type="Texture2D" uid="uid://b3ymuhdsxwn45" path="res://ressources/metal_map.png" id="2_dhhid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o501"]
+size = Vector2(1837, 5032)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4ygr"]
+size = Vector2(1234, 16991)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1ix"]
+size = Vector2(22082, 1208)
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_0763c")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(37, -54)
+scale = Vector2(9.31664, 8.98525)
+texture = ExtResource("1_dxxdi")
+
+[node name="MapStructure" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("2_dhhid")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Bucket" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-34, -22)
+polygon = PackedVector2Array(-2152, 321, -2121, -5286, -1555, -5285, -1544, -1490, 5445, -854, 6101, -1512, 6102, -5285, 6668, -5285, 6670, -287)
+
+[node name="LowerBase" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-2151, 2915, -2151, 3504, -278, 5380, 2843, 5379, 2845, 3489, 4805, 3489, 4809, 7344, 6631, 7345, 6633, 2282)
+
+[node name="LeftBase" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-9821, -873, -7852, -876, -7852, -4058, -5982, -5306, -4118, -5307, -4115, 318, -9827, 318)
+
+[node name="LowerBaseCurt" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-9993, 4794, -2212, 5442, -67, 7588, -9952, 7734)
+
+[node name="TopHurdle" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2553.5, -5988)
+shape = SubResource("RectangleShape2D_2o501")
+
+[node name="LeftWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-10437, -15.5)
+shape = SubResource("RectangleShape2D_a4ygr")
+
+[node name="RightWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(10484, -15)
+shape = SubResource("RectangleShape2D_a4ygr")
+
+[node name="BottomWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(47, 7947)
+shape = SubResource("RectangleShape2D_bo1ix")
+
+[node name="TopWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(22, -7898)
+shape = SubResource("RectangleShape2D_bo1ix")
