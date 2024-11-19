@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://ltuxutpl24cg"]
+
+[ext_resource type="Script" path="res://scripts/menu/Menu.gd" id="1_60s6j"]
+[ext_resource type="PackedScene" uid="uid://cx7isxdx5vnp0" path="res://scenes/menus/background.tscn" id="2_2d5jw"]
+[ext_resource type="Texture2D" uid="uid://b8dhasu6fc6ow" path="res://ressources/menu/cosmo_shadow-removebg-preview.png" id="4_vgweh"]
+[ext_resource type="Texture2D" uid="uid://2or22ckkrdtc" path="res://ressources/menu/cosmo-removebg-preview.png" id="5_x2316"]
+[ext_resource type="PackedScene" uid="uid://0ealam1qm0fy" path="res://scenes/util/button.tscn" id="6_ulyap"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_60s6j")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Water" parent="Background" instance=ExtResource("2_2d5jw")]
+scale = Vector2(0.666667, 0.666667)
+
+[node name="CosmoShadow" type="Sprite2D" parent="Background"]
+position = Vector2(1660, 557.333)
+scale = Vector2(2.66667, 2.66667)
+texture = ExtResource("4_vgweh")
+
+[node name="CosmoWriting" type="Sprite2D" parent="Background"]
+position = Vector2(1659.33, 571.333)
+scale = Vector2(2.66667, 2.66667)
+texture = ExtResource("5_x2316")
+
+[node name="StartButton" parent="." instance=ExtResource("6_ulyap")]
+layout_mode = 1
+offset_left = 1330.67
+offset_top = 957.333
+offset_right = 1330.67
+offset_bottom = 957.333
+
+[node name="OptionsButton" parent="." instance=ExtResource("6_ulyap")]
+layout_mode = 1
+offset_left = 1331.33
+offset_top = 1150.67
+offset_right = 1331.33
+offset_bottom = 1150.67
+
+[node name="QuitButton" parent="." instance=ExtResource("6_ulyap")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1334.67
+offset_top = 1350.67
+offset_right = 1334.67
+offset_bottom = 1350.67
+grow_horizontal = 1
+grow_vertical = 1

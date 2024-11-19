@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx7isxdx5vnp0"]
+
+[ext_resource type="Texture2D" uid="uid://d4lq3gxlm62rp" path="res://ressources/menu/background.jpg" id="1_ypmrj"]
+[ext_resource type="Texture2D" uid="uid://bfcavreh3yg38" path="res://ressources/menu/water-removebg-preview.png" id="2_drm0q"]
+
+[node name="Background" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(2506, 1440)
+scale = Vector2(3.91563, 3.28392)
+texture = ExtResource("1_ypmrj")
+
+[node name="Water" type="Sprite2D" parent="."]
+position = Vector2(2505.3, 1440.6)
+scale = Vector2(8.29702, 6.97046)
+texture = ExtResource("2_drm0q")

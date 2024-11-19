@@ -1,0 +1,132 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk5dqvnpu1wck"]
+
+[ext_resource type="Script" path="res://scripts/maps/map.gd" id="1_0763c"]
+[ext_resource type="Texture2D" uid="uid://bt0sjgx7rqho5" path="res://ressources/background_black.jpeg" id="1_dxxdi"]
+[ext_resource type="Texture2D" uid="uid://b3ymuhdsxwn45" path="res://ressources/metal_map.png" id="2_dhhid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o501"]
+size = Vector2(1837, 5032)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4ygr"]
+size = Vector2(1234, 16991)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1ix"]
+size = Vector2(22082, 1208)
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_0763c")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(37, -54)
+scale = Vector2(9.31664, 8.98525)
+texture = ExtResource("1_dxxdi")
+
+[node name="MapStructure" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("2_dhhid")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Bucket" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-34, -22)
+polygon = PackedVector2Array(-2117, 338, -2121, -5286, -1555, -5285, -1544, -1490, 5445, -854, 6101, -1512, 6102, -5285, 6668, -5285, 6670, -287)
+
+[node name="LowerBase" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-2151, 2915, -2151, 3504, -278, 5380, 2843, 5379, 2845, 3489, 4805, 3489, 4809, 7344, 6631, 7345, 6633, 2282)
+
+[node name="LeftBase" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-9821, -873, -7852, -876, -7852, -4058, -5982, -5306, -4118, -5307, -4115, 318, -9827, 318)
+
+[node name="LowerBaseCurt" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-9993, 4794, -2212, 5442, -67, 7588, -9952, 7734)
+
+[node name="TopHurdle" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2553.5, -5988)
+shape = SubResource("RectangleShape2D_2o501")
+
+[node name="LeftWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-10437, -15.5)
+shape = SubResource("RectangleShape2D_a4ygr")
+
+[node name="RightWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(10484, -15)
+shape = SubResource("RectangleShape2D_a4ygr")
+
+[node name="BottomWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(47, 7947)
+shape = SubResource("RectangleShape2D_bo1ix")
+
+[node name="TopWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(22, -7898)
+shape = SubResource("RectangleShape2D_bo1ix")
+
+[node name="Waypoints" type="Node2D" parent="."]
+
+[node name="Waypoint1" type="Marker2D" parent="Waypoints"]
+position = Vector2(-8910, -1680)
+
+[node name="Waypoint2" type="Marker2D" parent="Waypoints"]
+position = Vector2(-8987, -4545)
+
+[node name="Waypoint3" type="Marker2D" parent="Waypoints"]
+position = Vector2(-6180, -6365)
+
+[node name="Waypoint4" type="Marker2D" parent="Waypoints"]
+position = Vector2(-3135, -6482)
+
+[node name="Waypoint5" type="Marker2D" parent="Waypoints"]
+position = Vector2(10, -5969)
+
+[node name="Waypoint6" type="Marker2D" parent="Waypoints"]
+position = Vector2(-120, -2861)
+
+[node name="Waypoint7" type="Marker2D" parent="Waypoints"]
+position = Vector2(4390, -2276)
+
+[node name="Waypoint8" type="Marker2D" parent="Waypoints"]
+position = Vector2(4701, -6017)
+
+[node name="Waypoint9" type="Marker2D" parent="Waypoints"]
+position = Vector2(8186, -6269)
+
+[node name="Waypoint10" type="Marker2D" parent="Waypoints"]
+position = Vector2(8500, 230)
+
+[node name="Waypoint11" type="Marker2D" parent="Waypoints"]
+position = Vector2(8604, 1675)
+
+[node name="Waypoint12" type="Marker2D" parent="Waypoints"]
+position = Vector2(8208, 5962)
+
+[node name="Waypoint13" type="Marker2D" parent="Waypoints"]
+position = Vector2(5050, 1264)
+
+[node name="Waypoint14" type="Marker2D" parent="Waypoints"]
+position = Vector2(886, 1399)
+
+[node name="Waypoint15" type="Marker2D" parent="Waypoints"]
+position = Vector2(-2941, 1631)
+
+[node name="Waypoint16" type="Marker2D" parent="Waypoints"]
+position = Vector2(-2598, 4477)
+
+[node name="Waypoint17" type="Marker2D" parent="Waypoints"]
+position = Vector2(-294, 6335)
+
+[node name="Waypoint18" type="Marker2D" parent="Waypoints"]
+position = Vector2(3733, 6413)
+
+[node name="Waypoint19" type="Marker2D" parent="Waypoints"]
+position = Vector2(3791, 4419)
+
+[node name="Waypoint20" type="Marker2D" parent="Waypoints"]
+position = Vector2(-5677, 2308)
+
+[node name="Waypoint21" type="Marker2D" parent="Waypoints"]
+position = Vector2(-8871, 3586)
+
+[node name="Waypoint22" type="Marker2D" parent="Waypoints"]
+position = Vector2(-8834, 1286)
+
+[node name="Waypoint23" type="Marker2D" parent="Waypoints"]
+position = Vector2(-3044, -2745)

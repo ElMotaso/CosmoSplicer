@@ -10,14 +10,18 @@ config_version=5
 
 [application]
 
-config/name="Cosmosplicer"
-run/main_scene="res://world.tscn"
+config/name="Cosmo Splicer"
+run/main_scene="res://scenes/menus/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/mode=3
+window/size/viewport_width=5012
+window/size/viewport_height=2880
+window/size/mode=2
+window/stretch/mode="canvas_items"
+window/main_scene="res://menu.tscn"
 
 [input]
 

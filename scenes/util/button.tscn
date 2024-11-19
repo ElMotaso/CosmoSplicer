@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://0ealam1qm0fy"]
+
+[ext_resource type="Script" path="res://scripts/util/button.gd" id="1_vh3qj"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vh3qj")
+
+[node name="RichTextLabelShadow" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 8.0
+offset_right = 656.0
+offset_bottom = 65.0
+bbcode_enabled = true
+text = "[b][center][font=\"res://ressources/menu/namco-font/NamcoRegular-lgzd.ttf\"][color=black][font_size=49.5
+
+]start game
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_top = 2.0
+offset_right = 661.0
+offset_bottom = 60.0
+bbcode_enabled = true
+text = "[b][center][font=\"res://ressources/menu/namco-font/NamcoRegular-lgzd.ttf\"][color=green][font_size=51
+]start game
+"
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 1.0
+offset_right = 650.0
+offset_bottom = 54.0
+mouse_filter = 1
+
+[node name="PulseTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="PulseTimer" to="." method="_on_pulse_timer_timeout"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfni80df2u52n"]
+
+[ext_resource type="PackedScene" uid="uid://cx7isxdx5vnp0" path="res://scenes/menus/background.tscn" id="1_dsnwa"]
+[ext_resource type="PackedScene" uid="uid://0ealam1qm0fy" path="res://scenes/util/button.tscn" id="1_x6yd8"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" parent="." instance=ExtResource("1_dsnwa")]
+
+[node name="OptionsText" parent="." instance=ExtResource("1_x6yd8")]
+layout_mode = 1
+offset_left = 1721.0
+offset_top = 807.0
+offset_right = -1698.0
+offset_bottom = -1832.0
+
+[node name="PlayerCountText" parent="." instance=ExtResource("1_x6yd8")]
+layout_mode = 1
+offset_left = 2196.0
+offset_top = 1574.0
+offset_right = -2017.0
+offset_bottom = -1212.0
+
+[node name="BackToMenu" parent="." instance=ExtResource("1_x6yd8")]
+layout_mode = 1
+offset_left = 2179.0
+offset_top = 1871.0
+offset_right = -2085.0
+offset_bottom = -853.0

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://csjatho3ykf51"]
+
+[ext_resource type="Script" path="res://scenes/ships/alienship.gd" id="1_cp7pk"]
+[ext_resource type="PackedScene" uid="uid://jbotciglwwrj" path="res://scenes/weapons/bullet.tscn" id="2_5f3j7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g1f8v"]
+load_path = "res://.godot/imported/Alienship.png-ca5488bb188f330f54e2088793a91503.ctex"
+
+[node name="Alienship" type="CharacterBody2D"]
+script = ExtResource("1_cp7pk")
+bullet = ExtResource("2_5f3j7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 1.42109e-14)
+scale = Vector2(0.1, 0.1)
+texture = SubResource("CompressedTexture2D_g1f8v")
+offset = Vector2(1, 2.08165e-12)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(5, -1)
+rotation = 1.5708
+polygon = PackedVector2Array(0.999587, -114, 1.00028, 78, 0.000282407, 78, -6.99974, 72, -19.9998, 66.0001, -29.9998, 64.0001, -38.9998, 64.0001, -48.9998, 66.0002, -60.9997, 72.0002, -67.9997, 77.0002, -72.9997, 83.0003, -62.9999, 30.0002, -65.9999, 29.0002, -68.9999, 30.0002, -49.0001, -21.9998, -49.0001, -38.9998, -44.0002, -58.9998, -35.0003, -76.9999, -25.0003, -91.9999, -14.0004, -104)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(5, 1)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(0.999587, -114, 1.00028, 78, 0.000282407, 78, -6.99974, 72, -19.9998, 66.0001, -29.9998, 64.0001, -38.9998, 64.0001, -48.9998, 66.0002, -60.9997, 72.0002, -67.9997, 77.0002, -72.9997, 83.0003, -62.9999, 30.0002, -65.9999, 29.0002, -68.9999, 30.0002, -49.0001, -21.9998, -49.0001, -38.9998, -44.0002, -58.9998, -35.0003, -76.9999, -25.0003, -91.9999, -14.0004, -104)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(27, 0)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(125, 0)
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(14, -13)
+rotation = 1.5708
+polygon = PackedVector2Array(-20.0003, -74.9999, 12.9996, -105, 40.9997, -80.0001, 69.9999, -17.0003, 87.0003, 91.9997, 53.0003, 72.9998, 13.0003, 88, -23.9997, 72.0001, -59.9997, 91.0002, -43.0001, -14.9998)

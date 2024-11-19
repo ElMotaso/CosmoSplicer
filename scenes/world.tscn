@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://caj4dq0knsruw"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_178hi"]
+[ext_resource type="PackedScene" uid="uid://333m73iw38by" path="res://scenes/ships/spaceship.tscn" id="1_idnb8"]
+[ext_resource type="PackedScene" uid="uid://6wpg0yq0wap7" path="res://scenes/maps/metalmap.tscn" id="3_4odwf"]
+[ext_resource type="PackedScene" uid="uid://bbd8p31dlecul" path="res://scenes/ships/enemy.tscn" id="3_55ts2"]
+[ext_resource type="PackedScene" uid="uid://dgomh7af1vr5j" path="res://scenes/util/health_bar.tscn" id="3_l7wen"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_178hi")
+
+[node name="Map" parent="." instance=ExtResource("3_4odwf")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Spaceship" parent="." instance=ExtResource("1_idnb8")]
+position = Vector2(-4459, -949)
+rotation = -1.5708
+
+[node name="Enemy" parent="." instance=ExtResource("3_55ts2")]
+position = Vector2(4170, 2904)
+rotation = -1.5708
+
+[node name="PlayerHealthBar" parent="." instance=ExtResource("3_l7wen")]
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("3_l7wen")]
+offset_left = -200.0
+offset_top = -10.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Enemy2" parent="." instance=ExtResource("3_55ts2")]
+position = Vector2(1885, 2212)
+rotation = -1.5708

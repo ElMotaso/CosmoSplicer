@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://333m73iw38by"]
+
+[ext_resource type="Script" path="res://scripts/ships/spaceship.gd" id="1_0pqyd"]
+[ext_resource type="PackedScene" uid="uid://jbotciglwwrj" path="res://scenes/weapons/bullet.tscn" id="2_yg87a"]
+[ext_resource type="Script" path="res://scripts/ships/Sprite2D.gd" id="3_0yi1i"]
+[ext_resource type="Texture2D" uid="uid://doc4ml2pwlitc" path="res://ressources/spaceship_new.png" id="3_yctd2"]
+
+[node name="Spaceship" type="CharacterBody2D"]
+scale = Vector2(1.1, 1.1)
+collision_mask = 3
+safe_margin = 1.0
+script = ExtResource("1_0pqyd")
+bullet = ExtResource("2_yg87a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("3_yctd2")
+offset = Vector2(1, 2.08165e-12)
+script = ExtResource("3_0yi1i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(5, -1)
+rotation = 1.5708
+polygon = PackedVector2Array(0.999569, -119, 0.999569, -119, 62.9998, -61.0002, 63, 90, -59.9997, 91.0002, -60.0002, -60.9998)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(125, 0)
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(5, -1)
+rotation = 1.5708
+polygon = PackedVector2Array(0.999569, -119, 0.999569, -119, 62.9998, -61.0002, 63, 90, -59.9997, 91.0002, -60.0002, -60.9998)
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_spaceship_shoot_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
